@@ -141,83 +141,6 @@ header {
     cursor: pointer;
 }
 
-#search-show {
-    z-index: 200;
-    position: relative;
-    display: none;
-}
-
-/*==search==*/
-.search-container {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: #000000be;
-    z-index: 200;
-    display: none;
-    /*flex*/
-    justify-content: center;
-    align-items: center;
-}
-
-#search-show:checked~.search-container {
-    display: flex;
-}
-
-.search-container form {
-    max-width: 400px;
-    width: 100%;
-    height: 50px;
-    display: grid;
-    grid-template-columns: 1fr 40px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 2px 2px 30px rgba(46, 46, 46, 0.9);
-}
-
-.search-box {
-    width: 90%;
-    max-width: 400px;
-}
-
-.search-container form input {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    padding-left: 20px;
-    padding-right: 5px;
-    color: #333333;
-
-}
-
-.search-container form button {
-    background-color: #ecb913;
-    border: none;
-    outline: none;
-    color: #0c0c0c;
-    border-radius: 5px;
-    cursor: pointer;
-    height: 40px;
-    width: 100%;
-    font-weight: 500;
-}
-
-.close-search {
-    width: 30px;
-    height: 30px;
-    background-color: #ffffff;
-    color: #080808;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    margin-left: auto;
-    margin-bottom: 20px;
-}
 
 /**==main text==**/
 .main-text {
@@ -388,23 +311,6 @@ header {
     }
 }
 
-/*login*/
-#items.login {
-    max-width: 600px;
-    margin: 50px auto;
-    width: 90%;
-
-}
-
-.login form {
-    display: flex;
-    flex-direction: column;
-    background-color: #0c0c0c;
-    padding: 20px;
-    margin-top: 10px;
-
-}
-
 .items-heading {
     width: 100%;
     padding: 10px 0px;
@@ -422,39 +328,6 @@ header {
     font-size: 1.4rem;
     font-weight: 600px;
     letter-spacing: 1px;
-
-}
-
-.login form input {
-    background-color: #000000;
-    border: none;
-    outline: none;
-    height: 45px;
-    padding: 0px 20px;
-    width: 100%;
-    margin-bottom: 15px;
-    color: #ffffff;
-}
-
-.login form button {
-    background-color: #ecb913;
-    color: #141414;
-    height: 45px;
-    width: 100%;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.login form a {
-    color: #dfdfdf;
-    font-size: 0.9rem;
-    margin-top: 10px;
-}
-
-.login form a :hover {
-    text-decoration: underline;
 
 }
 
@@ -650,10 +523,6 @@ footer span {
 @media(max-width:1050px) {
     .post-container {
         grid-template-columns: 1fr 1fr;
-    }
-
-    .search-container form input {
-        width: 100%;
     }
 }
 

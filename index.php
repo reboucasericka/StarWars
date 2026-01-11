@@ -1,9 +1,5 @@
 <?php
-// Carrega as configurações e rotas
-require_once 'database/connection.php';
-require_once 'config/routes.php';
-
-// Configuração do autoload para carregar automaticamente as classes
+// Configuração do autoload para carregar automaticamente as classes (apenas para services/libs)
 spl_autoload_register(function ($class) {
     $class = ltrim($class, '\\');
     $file = '';
@@ -18,52 +14,17 @@ spl_autoload_register(function ($class) {
 
     // Lista de diretórios relevantes para carregar as classes
     $directories = [
-        'controllers/',
-        'models/',
         'services/libs/',
-        'database/',
-        'api/',
     ];
 
     foreach ($directories as $dir) {
-        $fullPath = $dir . $file; // Caminho completo, combinando diretório e arquivo
+        $fullPath = $dir . $file;
         if (file_exists($fullPath)) {
             require_once $fullPath;
-            return; // Encontrou, então sai do autoload
+            return;
         }
     }
-
-    // Registro de erro para classes não encontradas (apenas para depuração, remova em produção)
-    error_log("Classe não encontrada: {$class}. Verifique o namespace ou caminho.");
 });
-
-// Inicializa a conexão com o banco de dados
-$pdo = Database::connect(); // Certifique-se de que 'Database' aponta para a classe correta
-
-// Função para registrar logs no banco de dados
-function logRequest($method, $endpoint, $status) {
-    global $pdo;
-
-    $timestamp = date('Y-m-d H:i:s');
-    try {
-        $stmt = $pdo->prepare("INSERT INTO logs (method, endpoint, status, timestamp) VALUES (:method, :endpoint, :status, :timestamp)");
-        $stmt->execute([
-            ':method' => $method,
-            ':endpoint' => $endpoint,
-            ':status' => $status,
-            ':timestamp' => $timestamp
-        ]);
-    } catch (PDOException $e) {
-        error_log("Erro ao registrar log: " . $e->getMessage());
-    }
-}
-
-// Gerencia as rotas e registra o log
-$request = $_SERVER['REQUEST_URI'];
-$method = $_SERVER['REQUEST_METHOD'];
-
-$status = handleRoutes($request); // Essa função retorna um status HTTP (200, 404, etc.)
-logRequest($method, $request, $status);
 ?>
 
 
@@ -106,39 +67,12 @@ logRequest($method, $request, $status);
                 <!-- Menu de navegação -->
                 <ul class="menu">
                     <li><a href="index.php">Início</a></li>
-                    <li><a href="about.html">Sobre</a></li>
-                    <li><a href="peoples.html">Personagens</a></li>
-                    <li><a href="movie.html">Filmes</a></li>                   
+                    <li><a href="about.php">Sobre</a></li>
+                    <li><a href="peoples.php">Personagens</a></li>
+                    <li><a href="movie.php">Filmes</a></li>                   
                 </ul>
-                <!-- Ícones à direita no menu -->
-                <div class="right-nav">
-                    <label for="search-show" class="nav-search-icon">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </label>
-                    <a href="login.php" class="nav-user-icon">
-                        <i class="fa-solid fa-user"></i>
-                    </a>
-                </div>
             </nav>
         </header>
-        <!-- Caixa de Pesquisa -->
-        <input type="checkbox" id="search-show">
-        <div class="search-container">
-            <!--search-box-->
-            <div class="search-box">
-                <!-- Botão para fechar a caixa de pesquisa -->
-                <label for="search-show" class="close-search">
-                    <i class="fa-solid fa-xmark"></i>
-                </label>
-                <!-- Formulário de pesquisa -->
-                <form>
-                    <input type="text" placeholder="Search Here..." required />
-                    <button>
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
         <!-- Imagem Principal (Destaque) floating img-->
         <div class="main-img"><img src="img/123.jpg" alt="StarWars Main Image" />
         </div>
@@ -146,7 +80,7 @@ logRequest($method, $request, $status);
         <div class="main-text">
             <img src="img/icon.png" alt="StarWars Icon" />
             <!-- Botões de Ação -->
-            <a href="about.html">Saiba mais</a>
+            <a href="about.php">Saiba mais</a>
             <a href="https://www.youtube.com/watch?v=WbwuzMIwItE" target="_blank"> Assistir ao trailer</a>
         </div>
     </section>

@@ -29,10 +29,40 @@ if (!$id) {
 </head>
 
 <body>
+    <!--main-->
+    <section id="main" class="other-main">
+        <!--header-->
+        <header>
+            <nav class="navigation">
+                <!-- Ícone de menu para dispositivos móveis -->
+                <input type="checkbox" id="menu-btn" class="menu-btn" />
+                <label for="menu-btn" class="menu-icon">
+                    <span class="nav-icon"></span>
+                </label>
+                <!-- Logotipo -->
+                <a href="index.php" class="logo"><img src="img/logo.webp" alt="Logo" /></a>
+                <!-- Menu de navegação -->
+                <ul class="menu">
+                    <li><a href="index.php">Início</a></li>
+                    <li><a href="about.php">Sobre</a></li>
+                    <li><a href="peoples.php">Personagens</a></li>
+                    <li><a href="movie.php">Filmes</a></li>                   
+                </ul>
+            </nav>
+        </header>
+        <!-- Imagem Principal (Destaque) -->
+        <div class="main-img"><img src="img/moviebanner2.jpg" alt="Star Wars" />
+        </div>
+        <!-- Texto Principal -->
+        <div class="main-text">
+            <h1>Detalhes do Filme</h1>
+        </div>
+    </section>
+
     <!-- Seção de Detalhes do Filme -->
     <section id="items-movies" class="movies">
         <div class="items-heading">
-            <h1>Detalhes do Filme</h1>
+            <h1>Informações do Filme</h1>
         </div>
 
         <!-- Tabela com detalhes do filme -->
@@ -45,67 +75,32 @@ if (!$id) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (!empty($movieDetails)) : ?>
-                        <tr>
-                            <td>Título</td>
-                            <td><?= htmlspecialchars($movieDetails['title']) ?></td>
-                        </tr>
-                        <tr>
-                            <td>Nº Episódio</td>
-                            <td><?= htmlspecialchars($movieDetails['episode_id']) ?></td>
-                        </tr>
-                        <tr>
-                            <td>Sinopse</td>
-                            <td><?= nl2br(htmlspecialchars($movieDetails['opening_crawl'])) ?></td>
-                        </tr>
-                        <tr>
-                            <td>Data de Lançamento</td>
-                            <td><?= htmlspecialchars(date('d/m/Y', strtotime($movieDetails['release_date']))) ?></td>
-                        </tr>
-                        <tr>
-                            <td>Diretor</td>
-                            <td><?= htmlspecialchars($movieDetails['director']) ?></td>
-                        </tr>
-                        <tr>
-                            <td>Produtores</td>
-                            <td><?= htmlspecialchars($movieDetails['producer']) ?></td>
-                        </tr>
-                        <tr>
-                            <td>Personagens</td>
-                            <td>
-                                <?php if (!empty($movieDetails['characters'])) : ?>
-                                    <?php foreach ($movieDetails['characters'] as $character) : ?>
-                                        <span class="character-tag">
-                                            <?= htmlspecialchars($character) ?>
-                                        </span>
-                                    <?php endforeach; ?>
-                                <?php else : ?>
-                                    Nenhum personagem disponível.
-                                <?php endif; ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Idade do Filme</td>
-                            <td>
-                                <?php
-                                $releaseDate = new DateTime($movieDetails['release_date']);
-                                $today = new DateTime();
-                                $interval = $releaseDate->diff($today);
-
-                                echo "{$interval->y} anos, {$interval->m} meses, {$interval->d} dias";
-                                ?>
-                            </td>
-                        </tr>
-                    <?php else : ?>
-                        <tr>
-                            <td colspan="2">Detalhes do filme não encontrados.</td>
-                        </tr>
-                    <?php endif; ?>
+                    <tr>
+                        <td colspan="2">Carregando detalhes...</td>
+                    </tr>
                 </tbody>
             </table>
-            <a href="movie.html" class="btn-voltar">Voltar</a>
+            <a href="movie.php" class="btn-voltar">Voltar</a>
         </div>
     </section>
+
+    <!-- Rodapé--footer-->
+    <footer class="footer">
+        <span> © StarWars</span>
+        <span> Copyright 2025 - Ericka Rebouças </span>
+        <!-- Links de Mídias Sociais -->
+        <div class="mídia-social">
+            <a href="https://www.linkedin.com/in/erickareboucas/" target="_blank">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="https://www.instagram.com/oficialerickareboucas/" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://github.com/reboucasericka" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
+        </div>
+    </footer>
     <script src="js/details.js"></script>
 </body>
 
