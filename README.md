@@ -143,8 +143,11 @@ starwars/
 
 **Ericka Rebouças**
 📍 Portugal
-🔗 [LinkedIn](https://www.linkedin.com/)
-🔗 [GitHub](https://github.com/reboucasericka)
+🔗 [LinkedIn]
+https://www.linkedin.com/in/erickareboucas/
+
+🔗 [GitHub]
+https://github.com/reboucasericka
 
 ````
 
